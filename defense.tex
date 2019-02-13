@@ -1,0 +1,390 @@
+\documentclass{beamer}
+
+\usepackage{macros}
+
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+\begin{document}
+
+\author[A. Maurer]{Andrew Maurer}
+\date{September 23, 2017}
+\title[On the FG of $\H^\bullet$ for LSA]{On the Finite Generation of Relative Cohomology for Lie Superalgebras}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}{Overview}
+  \tableofcontents
+\end{frame}
+
+
+
+\section[LSAs \& $\H^\bullet$]{Lie superalgebras and their cohomology}
+
+\begin{frame}{Lie Superalgebras}
+  \pause
+  \begin{definition}
+    A Lie superalgebra $\g = \even{\g} \oplus \odd{\g}$ is a $\ZZ_2$-graded (complex) vector space with a bilinear bracket $[\cdot,\cdot]: \g \otimes \g \to \g$ satisfying: \pause
+    \begin{itemize}
+    \item $[x,[y,z]] = [[x,y],z] + (-1)^{\bar x \bar y} [y,[x,z]]$\pause
+    \item $[x,y] + (-1)^{\bar x \bar y} [y,x] = 0$
+    \end{itemize}
+    for homogeneous $x,y,z \in \g$.
+  \end{definition}\pause
+  \begin{example}
+    The degree-zero elements $\even{\g}$ form a Lie algebra.
+  \end{example}
+
+\end{frame}
+
+\begin{frame}{Examples of Lie superalgebras}
+  \begin{itemize}
+    \pause
+  \item $\gl(m|n) = $ all $(m+n) \times (m+n)$ matrices.
+    \[
+\even{\gl(m|n)} = \left(
+  \begin{array}{c|c}
+    A & 0 \\
+    \hline
+    0 & D
+  \end{array}
+\right)
+\text{ and } \odd{\gl(m|n)} = \left(
+  \begin{array}{c|c}
+    0 & B \\
+    \hline
+    C & 0
+  \end{array}
+\right)
+\]
+\pause
+  Bracket is given by $[X,Y] = X \circ Y - (-1)^{\bar X \bar Y} Y \circ X$.
+  \pause\item $\sl(m|n)$ is the subsuperalgebra of $\gl(m|n)$ given by all matrices of \emph{supertrace} 0, i.e., those such that $\Tr A - \Tr D = 0$.
+  \pause\item Those defined similarly to Lie algebras: linear transformations preserving certain forms on $\ZZ_2$-graded vector spaces.
+  \end{itemize}
+\pause
+  The simple, complex, finite-dimensional Lie superalgebras were classified [Kac].
+\end{frame}
+
+\begin{frame}{Classical Lie superalgebras}\pause
+  \begin{definition}
+  A Lie superalgebra $\even{\g} = \even{\g} +\odd{\g}$ is \emph{classical} if there is a reductive algebraic group $\even{G}$ such that
+  \begin{itemize}
+  \item $\even{\g} = \Lie(\even{G})$, and
+  \item An action $\even{G} \actson \odd{\g}$ differentiates to the adjoint action.
+  \end{itemize}
+  \end{definition}\pause
+  \begin{example}
+    $\gl(m|n)$, $\sl(m|n)$, $\mathfrak{osp}(m|n)$.
+  \end{example}
+\end{frame}
+
+\begin{frame}{Modules for Lie superalgebras}\pause
+  \begin{definition}
+    A \emph{module} for $\g$ is a $\ZZ_2$-graded vector space $M = \even{M} \oplus \odd{M}$ with a homomorphism $\varphi: \g \to \gl(M)$. In this way $\g$ acts on $M$.
+  \end{definition}\pause
+  \begin{example}
+    \begin{itemize}
+    \item $\CC$ is the trivial $\g$-module.\pause
+    \item $\g$ is a $\g$-module via the adjoint action.
+    \end{itemize}
+    
+  \end{example}\pause
+  A $\g$-module is really a graded module for $U_s(\g)$, the universal enveloping superalgebra:
+  \[
+    U_s(\g) = \mathcal{T}(\g) \bigg/ \left< \lambda \otimes \mu - (-1)^{\bar \mu \cdot \bar \lambda} \mu \otimes \lambda  - [\lambda, \mu]\right>.
+  \]
+\end{frame}
+
+\begin{frame}{Wedges}\pause
+  \begin{definition}
+    The \emph{exterior product} of a $\g$-module $M = \even{M} \oplus \odd{M}$ is
+    \[
+      \superext{p}\left(M\right) = \mathcal{T}\left(M\right)/\left< \lambda \otimes \mu + (-1)^{\bar \mu \cdot \bar \lambda} \mu \otimes \lambda \right>
+    \]\pause
+    or
+    \[
+      \superext{p}\left(M\right) = \bigoplus_{i+j=p} \ext{i}\left(\even{M}\right) \otimes {S}^j\left(\odd{M}\right)
+    \]\pause
+ This is naturally a $\g$-module.   
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Relative cohomology I}\pause
+  Relative cohomology fits into Hochschild's relative cohomology theory. \pause We use an explicit Koszul complex. \pause Let $\a \leq \g$ be a subsuperalgebra:
+  \[
+    C^p(\g,\a;M) = \Hom_\a\left(\superext{p}\left( \g/\a \right), M \right)
+  \]\pause
+  Equip this with differentials:
+  \[
+    d: C^{p}(\g,\a;M) \to C^{p+1}(\g,\a;M)
+  \]\pause
+  \begin{align*}
+    df(\w_0\wedge\ldots\wedge\w_p) = &\sum_i (-1)^{\tau_i(-)} \w_i . f(\w_0 \wedge \ldots \hat \w_i \ldots \wedge \w_p) \\
+    &+ \sum_{i < j} (-1)^{\sigma_{i,j}(-)} f([\w_i,\w_j]\wedge \w_0 \ldots \hat \w_i \ldots \hat \w_j \ldots \wedge \w_p)
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Relative cohomology II}\pause
+  \begin{definition}
+    \[
+      \H^p(\g,\a;M) = \frac{\ker\left(d:C^p(\g,\a;M) \to C^{p+1}(\g,\a;M)\right)}{\im\left(d: C^{p-1}(\g,\a;M) \to C^p(\g,\a;M)\right)}
+    \]
+    \pause Or
+    \[
+      \H^p(\g,\a;M) = \Ext^p_{(\g,\a)}(\CC,M)
+    \]
+  \end{definition}\pause
+  \[
+    \H^p(\g,\a;M) = \frac{\left\{0 \to M \to E_1 \to \ldots \to E_p \to \CC \to 0 \text{ which are $\a$-split}\right\}}{\sim}
+  \]
+\end{frame}
+
+\begin{frame}{Relative cohomology III}\pause
+  We can give the following direct sum of cohomology groups the structure of a graded $\CC$-algebra by Yoneda splice or tensor product:
+  \[
+    \H^\bullet(\g,\a;\CC) = \bigoplus_{p \in \ZZ} \H^p(\g,\a;\CC)
+  \]\pause
+  Under tensor product, the direct sum of cohomology groups for a module becomes a module for $\H^\bullet(\g,\a;\CC)$:
+  \[
+    \H^\bullet(\g,\a;M) = \bigoplus_{p \in \ZZ} \H^p(\g,\a;M).
+  \]\pause
+  As does
+  \[
+    \Ext^\bullet_{(\g,\a)}(M,M) = \bigoplus_{p \in \ZZ} \Ext^p(\g,\a;M).
+  \]
+  
+\end{frame}
+
+\begin{frame}{A result of Fuks-Leites}\pause
+  \begin{theorem}[Fuks-Leites]
+    There are isomorphisms:
+    \[
+      \H^\bullet(\mathfrak{osp}(m|2n),0;\CC) \cong
+      \begin{cases}
+        \H^\bullet(\mathfrak{o}(m),0;\CC) \text{ if } m \geq 2n \\
+        \H^\bullet(\mathfrak{sp}(2n),0;\CC) \text{ if } m < 2n
+      \end{cases}
+    \]
+    \[
+      \H^\bullet(\gl(m|n),0;\CC) \cong \H^\bullet(\gl(\max(m,n)),0;\CC)
+    \]
+  \end{theorem}\pause
+  There's a similar statement for Lie superalgebras of type $G(3)$, $F(4)$, and $D(2,1;\alpha)$
+\end{frame}
+
+\begin{frame}{A result of Boe-Kujawa-Nakano}
+
+  \begin{theorem}[Boe, Kujawa, Nakano 2006]
+    Let $\g = \even{\g} \oplus \odd{\g}$ be a classical Lie superalgebra. The relative cohomology ring $\H^\bullet(\g,\even{\g};\CC)$ is isomorphic to $S^\bullet(\odd{\g}^*)^{\even{G}}$, and is thus a finitely generated $\CC$-algebra.
+  \end{theorem}
+\end{frame}
+
+
+\section{Spectral Sequence}
+
+\begin{frame}{Spectral sequence theorem}\pause
+
+  \begin{theorem}
+    Let $\g = \even{\g} \oplus \odd{\g}$ be a classical Lie superalgebra, $\a \leq \even{\g}$ a subalgebra, and $M$ a $\g$-module. There exists a spectral sequence $\{E_r^{p,q}(M)\}$ which computes cohomology and satisfies
+    \begin{align*}
+      E_2^{p,q}(M) \cong \H^p(\g,\even{\g};M) \otimes \H^q(\even{\g},\a;\CC) \Rightarrow \H^{p+q}(\g,\a;\CC).
+    \end{align*}
+    Moreover, when $M$ is finite-dimensional, $E_2^{\bullet,\bullet}(M)$ is a Noetherian $E_2^{\bullet,\bullet}(\CC)$-module.
+  \end{theorem}
+\pause
+  \begin{corollary}
+    The relative cohomology ring $\H^\bullet(\g,\a;\CC)$ is a finitely-generated $\CC$-algebra.
+  \end{corollary}
+\end{frame}
+
+\begin{frame}{Filtration}\pause
+  We filter the cochains in a way inspired by Hochschild and Serre:\pause
+  \begin{enumerate}
+  \item Decompose:
+    \[
+      C^n(\g,\a;M) = \bigoplus_{i + j = n} C^i\left(\even{\g},\a;\Hom_\CC\left( \superext{j}\left(\g/\even{\g}\right),M\right)\right)
+    \]\pause
+  \item Filter:
+    \[
+      C^n(\g,\a;M)_{(p)} = \bigoplus_{\substack{i + j = n\\ i \leq n-p}} C^i\left(\even{\g},\a;\Hom_\CC\left( \superext{j}\left(\g/\even{\g}\right),M\right)\right)
+    \]
+    
+  \end{enumerate}
+\pause
+  We are guaranteed a spectral sequence of $\a$-modules:
+  \[
+    E_r^{p,q}(M) \Rightarrow \H^{p+q}(\g,\a;M).
+  \]  
+\end{frame}
+
+\begin{frame}{ID Pages}
+  \begin{enumerate}
+  \pause\item $E_0^{p,q}(M) \cong C^q(\even{\g},\a;\Hom_\CC(\superext{p}(\g/\even{\g}),M))$: Just a quotient.
+    \vspace{0.2in}
+  \pause\item $E_1^{p,q}(M) \cong \H^q(\even{\g},\a;\Hom_\CC(\superext{p}(\g/\even{\g}),M))$: Requires some algebraic gymnastics and a diagram chase.
+    \vspace{0.2in}
+  \pause\item $E_2^{p,q}(M) \cong \H^p(\g,\even{\g};M) \otimes \H^q(\even{\g},\a;\CC)$: This uses the fact that $\g$ is classical and a vanishing theorem for cohomology.
+    
+   $\Hom_\CC(\superext{p}(\g/\even{\g}),M) = \Hom_{\even{\g}}(\superext{p}(\g/\even{\g}),M) \oplus V = C^p(\g,\even{\g};M) \oplus V$. 
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{ID Edge}
+  \pause
+  We have an edge homomorphism:
+  \[
+    {E_2^{\bullet,0}(M)} \to E_\infty^{\bullet,0}(M)
+  \]\pause
+  But recall $E_2^{\bullet,0}(M) \cong \H^\bullet(\g,\even{\g};M)$.
+\pause
+  \begin{theorem}
+    The edge homomorphism $E_2^{\bullet,0}(M) \to E_\infty^{\bullet,0}(M)$ is induced by the restriction map
+    \[
+      \resmap:\H^\bullet(\g,\even{\g};M) \to \H^\bullet(\g,\a;M).
+    \]
+    
+  \end{theorem}
+\end{frame}
+
+\section{Finite Generation}
+
+\begin{frame}{Finite generation}
+  \pause
+  \begin{theorem}
+    When $M$ is finite-dimensional, $E_r^{\bullet,\bullet}(M)$ is a Noetherian $E_r^{\bullet,\bullet}(\CC)$-module for $2 \leq r \leq \infty$.
+  \end{theorem}
+  \pause
+  \begin{corollary}
+    $E_\infty^{\bullet,\bullet}(\CC)$ is a Noetherian $E_2^{\bullet,0}(\CC)$-module, and is thus finitely-generated.
+  \end{corollary}
+  \pause
+  \begin{corollary}
+    $\H^\bullet(\g,\a;\CC)$ is Noetherian $\H^\bullet(\g,\even{\g};\CC)$-module, and is therefore finitely-generated as a $\CC$-algebra.
+  \end{corollary}
+\end{frame}
+
+\begin{frame}{Collapsing at $E_2$}\pause
+  \begin{definition}
+    Recall that a $\CC$-algebra $A$ is \emph{Cohen-Macaulay} if there is a polynomial subring $R$ such that $A$ is a finite and free $R$-module.
+  \end{definition}
+  \pause
+  \begin{theorem}
+   If the spectral sequence collapses at $E_2$, then $\H^\bullet(\g,\a;\CC)$ is a Cohen-Macaulay ring.
+  \end{theorem}
+ \pause
+   This uses a rather serious result of Hochster-Roberts regarding invariants under a reductive group action being Cohen-Macaulay.
+\end{frame}
+
+\begin{frame}{Application}\pause
+  \begin{theorem}
+    Let $\g = \even{\g} \oplus \odd{\g}$ be a classical Lie superalgebra such that $\H^\bullet(\g,\even{\g};\CC)$ vanishes in odd degrees. Let $\l \leq \even{\g}$ be a standard Levi subalgebra (i.e., nonzero and generated by simple roots). The following hold:
+    \begin{itemize}
+    \pause\item Spectral sequence collapses at $E_2$.
+    \pause\item $\H^\bullet(\g,\l;\CC)$ is Cohen-Macaulay.
+    \pause\item $\kdim \H^\bullet(\g,\even{\g};\CC) = \kdim \H^\bullet(\g,\l;\CC)$.
+    \end{itemize}
+  \end{theorem}
+  
+  \pause This statement uses deep results from Kazhdan-Lusztig theory and Category $\O$ cohomology.
+
+  \pause
+\begin{example}
+  This result applies to many $\g$. E.g., $\gl(m|n)$, $\sl(m|n)$, $\mathfrak{psl}(2n|2n)$, $\mathfrak{osp}(2m+1|2n)$, $\mathfrak{osp}(2m,2n)$, $P(4\ell - 1)$, $D(2,1;\alpha)$, $G(3)$, and $F(4)$.
+\end{example}
+\end{frame}
+
+\section{Geometry}
+
+\begin{frame}{Cohomology varieties} \pause
+  To do geometry, we need a finitely-generated commutative subring. As in Friedlander-Parshall, we use the even cohomology groups:
+  \[
+    \H^{ev}(\g,\a;\CC) = \bigoplus_{n \geq 0} \H^{2n}(\g,\a;\CC).
+  \]
+  \pause
+  \begin{definition}
+    The \emph{relative cohomology variety} of $\g$ relative to $\a$ is
+    \[
+      V_{(\g,\a)}(\CC) = \maxspec\left(\H^{ev}(\g,\a;\CC)\right).
+    \]
+    
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Support varieties}\pause
+  A $\g$-module $M$ determines a $\H^\bullet(\g,\a;M)$-module $\Ext^\bullet_{(\g,\a)}(M,M)$.\pause This determines a variety
+  \[
+    \operatorname{Z}\left(\Ann_{\H^\bullet(\g,\a;\CC)}\Ext^\bullet_{(\g,\a)}(M,M)\right) \subseteq V_{(\g,\a)}(\CC).
+  \]\pause
+  Call this the \emph{support variety} $V_{(\g,\a)}(M) \subseteq V_{(\g,\a)}(\CC)$.
+\end{frame}
+
+\begin{frame}{Realization morphism and Natural Modules}\pause
+  We have the restriction map
+  \[
+    \H^\bullet(\g,\even{\g};\CC) \xrightarrow{\resmap} \H^\bullet(\g,\a;\CC)
+  \]\pause
+  And a corresponding \emph{realization morphism}
+  \[
+    V_{(\g,\even{\g})}(\CC) \xleftarrow{\Phi} V_{(\g,\a)}(\CC)
+  \]
+\pause
+  \begin{definition}
+    We say a $\g$-module is \emph{natural} relative to $\a$ if
+    \[
+      \Phi(V_{(\g,\a)}(M)) = \Phi(V_{(\g,\a)}(\CC)) \cap V_{(\g,\even{\g})}(M).
+    \]
+    The subalgebra $\a$ is \emph{natural in $\g$} if every $\g$-module is natural relative to $\a$.
+  \end{definition}
+  
+\end{frame}
+
+\begin{frame}{Tensor products}\pause
+  We say a Lie superalgebra $\g$ \emph{satisfies the tensor product theorem} relative to $\a$ if
+  \[
+    V_{(\g,\a)}(M \otimes N) = V_{(\g,\a)}(M) \cap V_{(\g,\a)}(N)
+  \]
+  for all modules $M$ and $N$.
+  \pause
+  \begin{theorem}
+    Let $\g$ be a Lie superalgebra which satisfies the tensor product theorem relative to $\even{\g}$. Then \[\Phi(V_{(\g,\a)}(M \otimes N)) = \Phi(V_{(\g,\a)}(M)) \cap \Phi(V_{(\g,\a)}(N)).\]
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Connectedness} \pause
+  We need to assume further $\g$ is \emph{stable} and \emph{polar}, some GIT conditions appearing in [Bagci-Kujawa-Nakano].
+
+  \pause
+  \begin{theorem}
+    Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Suppose $\Phi(V_{(\g,\a)}(M)) = X \cup Y$ with $X \cap Y = \{0\}$. Then there exist modules $M_1$ and $M_2$ with
+    \[
+      X = \Phi(V_{(\g,\a)}(M_1)) \text{ and } Y = \Phi(V_{(\g,\a)})(M_1).
+    \]
+    
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Realizability}
+  \pause
+  \begin{theorem}
+    Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Let $X$ be a closed, conical, subvariety of $V_{(\g,\a)}(\CC)$. 
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{What's next?}
+  \begin{enumerate}
+  \pause\item What happens when $\a \not\leq \even{\g}$? Are there cases when $\H^\bullet(\g,\a;\CC)$ is still finitely-generated?
+  \pause\item We saw that the spectral sequence collapses at $E_2$ implies $\H^\bullet(\g,\a;\CC)$ is CM. What about the converse? (It does for $p$-nilpotent Lie algebras, [Carlson-Nakano].)
+  \pause\item When is $\a$ natural?
+  \pause\item The dimension $\dim V_{(\g,\even{\g}}(M) = \atyp M$ for simple modules when $\g = \gl(m|n)$ [Boe-Kujawa-Nakano]. Is there a combinatorial interpretation for $\dim V_{(\g,\a)} M$ for simple $M$?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Thanks!}
+  \centering
+  \large Thank you!
+\end{frame}
+
+\end{document}
