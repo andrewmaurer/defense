@@ -1,0 +1,42 @@
+\message{ !name(defense.tex)}\documentclass[handout]{beamer}
+
+\usepackage{macros}
+
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+\begin{document}
+
+\message{ !name(defense.tex) !offset(16) }
+
+    \item $\H^n(G;M) =$ cohomology groups. Can be multiplied using Yoneda product or cup product.
+    \end{itemize}
+    \begin{theorem}[Evens, `61]
+      \begin{itemize}
+      \item The cohomology ring $\H^\bullet(G;k) = \Ext_{kG}^\bullet(k,k)$ is finitely generated.
+      \item If $M$ is a finite-dimensional $kG$-module, $\Ext_{kG}^\bullet(M,M)$ is a Noetherian graded module for $\H^\bullet(G;k)$.
+      \end{itemize}
+    \end{theorem}
+    \emph{Idea for proof:} Reduce to Sylow subgroups using spectral sequence.
+  \end{frame}
+
+  \begin{frame}{Varieties}
+    \begin{definition}
+      \begin{itemize}
+        \item \emph{Cohomology Variety:} $\V_G = \Spec\left(\H^\bullet(G;k)\right)$
+        \item \emph{Support Variety:}
+          \[
+            \V_G(M) = \Z\left(\Ann_{\H^\bullet(G;k)}\left(\Ext_{kG}^\bullet(M,M)\right)\right) \subseteq \V_G
+          \]
+        \end{itemize}
+      \end{definition}
+      \begin{example}
+        If $G = \ZZ_p^r$. 
+      \end{example}
+    \end{frame}
+
+    \begin{frame}{Idea}
+      
+\message{ !name(defense.tex) !offset(381) }
+
+\end{document}

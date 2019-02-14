@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{macros}
 
@@ -19,8 +19,105 @@
   \tableofcontents
 \end{frame}
 
+\section[Context]{Context}
 
+\begin{frame}
+  \begin{center}
+    \huge History
+    \\ \footnotesize or
+    \\ \small an extended motivating example
+  \end{center}
+\end{frame}
 
+\begin{frame}{The Main Players}
+  \begin{itemize}
+    \item $k = \bar k$ field of characteristic $p > 0$,
+    \item $G$ = \textbf{finite group} with $p \mid |G|$, $p$-Lie algebra, pointed Hopf algebra, etc.
+    \item $\H^n(G;M) =$ cohomology groups. Can be multiplied using Yoneda product or cup product.
+    \end{itemize}
+    \begin{theorem}[Evens, `61]
+      \begin{itemize}
+      \item The cohomology ring $\H^\bullet(G;k) = \Ext_{kG}^\bullet(k,k)$ is finitely generated.
+      \item If $M$ is a finite-dimensional $kG$-module, $\Ext_{kG}^\bullet(M,M)$ is a Noetherian graded module for $\H^\bullet(G;k)$.
+      \end{itemize}
+    \end{theorem}
+    \emph{Idea for proof:} Reduce to Sylow subgroups using spectral sequence.
+  \end{frame}
+
+  \begin{frame}{Varieties}
+    \begin{definition}
+      \begin{itemize}
+        \item \emph{Cohomology Variety:} $\V_G = \Spec\left(\H^\bullet(G;k)\right)$
+        \item \emph{Support Variety:}
+          \[
+            \V_G(M) = \Z\left(\Ann_{\H^\bullet(G;k)}\left(\Ext_{kG}^\bullet(M,M)\right)\right) \subseteq \V_G
+          \]
+        \end{itemize}
+      \end{definition}
+      Notice that $\V_G(M)$ is a conical subvariety.
+      \begin{example}
+        If $G = \ZZ_p^r$. 
+      \end{example}
+    \end{frame}
+
+    \begin{frame}{Algebra $\leftrightarrow$ Geometry}
+      \begin{idea}
+        Build a dictionary:
+        \begin{center}
+          \{Algebraic Data About $M$\} $\leftrightarrow$ \{Geometric Data About $\V_G(M)$\}
+        \end{center}
+      \end{idea}
+      \begin{theorem}
+        \begin{itemize}
+        \item $M$ is injective if and only if $\V_G(M) = \{0\}$.
+        \item $c_G(M) = \dim \V_G(M)$
+        \item If $\V_G(M) = X \cup Y$ with $X \cap Y = \{0\}$, then $M = M_X \oplus M_Y$ with $\V_G(M_X) = X$ and $\V_G(M_Y) = Y$.
+        \end{itemize}
+      \end{theorem}
+      Here $c_G(M)$ is the \emph{complexity}, meaning the \emph{rate of growth} of a minimal $kG$-projective resolution
+      \[
+        \ldots \to P_2 \to P_1 \to P_0 \to M \to 0
+      \]
+    \end{frame}
+
+    \begin{frame}{Tensor Products}
+      \begin{theorem}[Tensor Product Theorem]
+        Let $M$ and $N$ be $kG$-modules. The following varieties are equal:
+        \[
+          \V_G(M \otimes N) = \V_G(M) \cap \V_G(N)
+        \]
+      \end{theorem}
+      Tensor product theorems as above do not follow from general nonsense, and require explicit constructions.
+      \begin{definition}
+        Let $E = \ZZ_p^r = \left< g_1,\ldots,g_r\right>$ be elementary Abelian.
+        \[
+          \V_E^\# = \left<g_1 - 1, \ldots, g_r - 1\right> \subseteq kE
+        \]
+        And the \emph{rank variety} of a module $M$ is the subset of $\V_E^\#$
+        \[
+          \V_E^\#(M) = \left\{ v \in \V_E^\# \big| M\res_{\left<1 + v\right>} \text{ is not free }  \right\} \cup \left\{ 0 \right\}
+        \]
+        
+      \end{definition}
+    \end{frame}
+
+    \begin{frame}{Tensor Products (cont)}
+      \begin{theorem}[Avrunin-Scott]
+        There is an isomorphism $\V_E \cong \V_E^\#$, and under this isomorphism:
+        \[
+          \V_E(M) \cong \V_E^\#(M)
+        \]
+      \end{theorem}
+      \begin{theorem}[Quillen]
+        The variety $\V_G$ may be stratified by varieties for elementary Abelian subgroups.
+        \[
+          \V_G = \bigcup_{\substack{E \leq G \\ \text{el.ab.}}} \resmap_{G,E}^* \V_E
+        \]
+      \end{theorem}
+      \begin{corollary}
+        \[\V_G(M \otimes N) = \V_G(M) \cap \V_G(N)\]
+      \end{corollary}
+    \end{frame}
 \section[LSAs \& $\H^\bullet$]{Lie superalgebras and their cohomology}
 
 \begin{frame}{Lie Superalgebras}
