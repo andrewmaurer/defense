@@ -1,15 +1,17 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \usepackage{macros}
 
 \usetheme{Boadilla}
 \usecolortheme{beaver}
 
+\newcommand{\sectionframe}[1]{\begin{frame}\begin{center}{\Huge #1 }\end{center}\end{frame}}
+
 \begin{document}
 
 \author[A. Maurer]{Andrew Maurer}
-\date{September 23, 2017}
-\title[On the FG of $\H^\bullet$ for LSA]{On the Finite Generation of Relative Cohomology for Lie Superalgebras}
+\date{March 4, 2019}
+\title[$\H^\bullet$ \& $\V$ for LSA]{Cohomology and Support Varieties for Classical Lie Superalgebras}
 
 \begin{frame}
   \maketitle
@@ -19,48 +21,49 @@
   \tableofcontents
 \end{frame}
 
-\section[Context]{Context}
+\section{History}
 
-\begin{frame}
-  \begin{center}
-    \huge History
-    \\ \footnotesize or
-    \\ \small an extended motivating example
-  \end{center}
-\end{frame}
+%\sectionframe{History \\ \vspace{-.75em}{\footnotesize or} \\ {\small an extended motivating example}}
+\sectionframe{History}
 
+\pause
 \begin{frame}{The Main Players}
+  Support theory was pioneered by Jon Carlson here at UGA.
+  \pause
   \begin{itemize}
-    \item $k = \bar k$ field of characteristic $p > 0$,
-    \item $G$ = \textbf{finite group} with $p \mid |G|$, $p$-Lie algebra, pointed Hopf algebra, etc.
-    \item $\H^n(G;M) =$ cohomology groups. Can be multiplied using Yoneda product or cup product.
+    \item $k = \bar k$ field of characteristic $p > 0$,\pause
+    \item $G$ = \textbf{finite group} with $p \mid |G|$, $p$-Lie algebra, pointed Hopf algebra, etc.\pause
+    \item $\H^n(G;M) =$ cohomology groups. Can be multiplied using Yoneda product or cup product.\pause
     \end{itemize}
     \begin{theorem}[Evens, `61]
       \begin{itemize}
       \item The cohomology ring $\H^\bullet(G;k) = \Ext_{kG}^\bullet(k,k)$ is finitely generated.
       \item If $M$ is a finite-dimensional $kG$-module, $\Ext_{kG}^\bullet(M,M)$ is a Noetherian graded module for $\H^\bullet(G;k)$.
-      \end{itemize}
+      \end{itemize}\pause
     \end{theorem}
     \emph{Idea for proof:} Reduce to Sylow subgroups using spectral sequence.
   \end{frame}
 
   \begin{frame}{Varieties}
+    \pause
     \begin{definition}
       \begin{itemize}
-        \item \emph{Cohomology Variety:} $\V_G = \Spec\left(\H^\bullet(G;k)\right)$
+        \item \emph{Cohomology Variety:} $\V_G = \Spec\left(\H^\bullet(G;k)\right)$\pause
         \item \emph{Support Variety:}
           \[
             \V_G(M) = \Z\left(\Ann_{\H^\bullet(G;k)}\left(\Ext_{kG}^\bullet(M,M)\right)\right) \subseteq \V_G
           \]
         \end{itemize}
-      \end{definition}
+      \end{definition}\pause
       Notice that $\V_G(M)$ is a conical subvariety.
-      \begin{example}
-        If $G = \ZZ_p^r$. 
+      \begin{example}\pause
+        If $G = \ZZ_p^r$, $p \neq 2$, then \[\H^\bullet(\ZZ_p^r;k) \cong k[x_1,\ldots,x_r] \otimes \Lambda(y_1,\ldots,y_r)\] with $\deg x_i = 2$, $\deg y_i = 1$. \\
+        This implies $\H^{ev}(\ZZ_p^r;k) \cong k[x_1,\ldots,x_r]$ and thus $\V_{\ZZ_p^r} = \AA^r$.
       \end{example}
     \end{frame}
 
     \begin{frame}{Algebra $\leftrightarrow$ Geometry}
+      \pause
       \begin{idea}
         Build a dictionary:
         \begin{center}
@@ -69,27 +72,30 @@
       \end{idea}
       \begin{theorem}
         \begin{itemize}
-        \item $M$ is injective if and only if $\V_G(M) = \{0\}$.
-        \item $c_G(M) = \dim \V_G(M)$
-        \item If $\V_G(M) = X \cup Y$ with $X \cap Y = \{0\}$, then $M = M_X \oplus M_Y$ with $\V_G(M_X) = X$ and $\V_G(M_Y) = Y$.
+        \item $M$ is injective if and only if $\V_G(M) = \{0\}$.\pause
+        \item $c_G(M) = \dim \V_G(M)$\pause
+        \item If $\V_G(M) = X \cup Y$ with $X \cap Y = \{0\}$, then $M = M_X \oplus M_Y$ with $\V_G(M_X) = X$ and $\V_G(M_Y) = Y$.\pause
         \end{itemize}
       \end{theorem}
-      Here $c_G(M)$ is the \emph{complexity}, meaning the \emph{rate of growth} of a minimal $kG$-projective resolution
+      \pause Here $c_G(M)$ is the \emph{complexity}, meaning the \emph{rate of growth} of a minimal $kG$-projective resolution
       \[
         \ldots \to P_2 \to P_1 \to P_0 \to M \to 0
       \]
     \end{frame}
 
     \begin{frame}{Tensor Products}
+      \pause
       \begin{theorem}[Tensor Product Theorem]
         Let $M$ and $N$ be $kG$-modules. The following varieties are equal:
         \[
           \V_G(M \otimes N) = \V_G(M) \cap \V_G(N)
         \]
       \end{theorem}
+      \pause
       Tensor product theorems as above do not follow from general nonsense, and require explicit constructions.
+      \pause
       \begin{definition}
-        Let $E = \ZZ_p^r = \left< g_1,\ldots,g_r\right>$ be elementary Abelian.
+        Let $E = \ZZ_p^r = \left< g_1,\ldots,g_r\right>$ be elementary Abelian.% The \emph{shifted subgroup}:
         \[
           \V_E^\# = \left<g_1 - 1, \ldots, g_r - 1\right> \subseteq kE
         \]
@@ -102,23 +108,28 @@
     \end{frame}
 
     \begin{frame}{Tensor Products (cont)}
+      \pause
       \begin{theorem}[Avrunin-Scott]
         There is an isomorphism $\V_E \cong \V_E^\#$, and under this isomorphism:
         \[
           \V_E(M) \cong \V_E^\#(M)
         \]
       \end{theorem}
+      \pause
       \begin{theorem}[Quillen]
-        The variety $\V_G$ may be stratified by varieties for elementary Abelian subgroups.
+        The variety $\V_G$ may be expressed as the union of varieties for elementary Abelian subgroups.
         \[
           \V_G = \bigcup_{\substack{E \leq G \\ \text{el.ab.}}} \resmap_{G,E}^* \V_E
         \]
       \end{theorem}
+      \pause
       \begin{corollary}
         \[\V_G(M \otimes N) = \V_G(M) \cap \V_G(N)\]
       \end{corollary}
     \end{frame}
-\section[LSAs \& $\H^\bullet$]{Lie superalgebras and their cohomology}
+\section[LSAs \& $\H^\bullet$]{New Situation and Motivating Results}
+
+\sectionframe{New Situation {\small ~ \\ ~ \\ Classical Results}}
 
 \begin{frame}{Lie Superalgebras}
   \pause
@@ -167,14 +178,14 @@
 
 \begin{frame}{Classical Lie superalgebras}\pause
   \begin{definition}
-  A Lie superalgebra $\even{\g} = \even{\g} +\odd{\g}$ is \emph{classical} if there is a reductive algebraic group $\even{G}$ such that
+  A Lie superalgebra $\g = \even{\g} +\odd{\g}$ is \emph{classical} if there is a reductive algebraic group $\even{G}$ such that
   \begin{itemize}
   \item $\even{\g} = \Lie(\even{G})$, and
   \item An action $\even{G} \actson \odd{\g}$ differentiates to the adjoint action.
   \end{itemize}
   \end{definition}\pause
   \begin{example}
-    $\gl(m|n)$, $\sl(m|n)$, $\mathfrak{osp}(m|n)$.
+    The following are classical Lie superalgebras: $\gl(m|n)$, $\sl(m|n)$, $\mathfrak{osp}(m|n)$.
   \end{example}
 \end{frame}
 
@@ -199,7 +210,7 @@
   \begin{definition}
     The \emph{exterior product} of a $\g$-module $M = \even{M} \oplus \odd{M}$ is
     \[
-      \superext{p}\left(M\right) = \mathcal{T}\left(M\right)/\left< \lambda \otimes \mu + (-1)^{\bar \mu \cdot \bar \lambda} \mu \otimes \lambda \right>
+      \superext{p}\left(M\right) = \mathcal{T}\left(M\right)\bigg/\left< \lambda \otimes \mu + (-1)^{\bar \mu \cdot \bar \lambda} \mu \otimes \lambda \right>
     \]\pause
     or
     \[
@@ -210,18 +221,22 @@
 \end{frame}
 
 \begin{frame}{Relative cohomology I}\pause
-  Relative cohomology fits into Hochschild's relative cohomology theory. \pause We use an explicit Koszul complex. \pause Let $\a \leq \g$ be a subsuperalgebra:
+  Relative cohomology fits into Hochschild's relative cohomology theory. \pause We use an explicit Koszul complex. \pause Let $\a \leq \even{\g}$ be a subsuperalgebra with $\even{\g} = \a \oplus \a^\perp$ as $\a$-modules. Define cochain groups
   \[
     C^p(\g,\a;M) = \Hom_\a\left(\superext{p}\left( \g/\a \right), M \right)
   \]\pause
   Equip this with differentials:
   \[
     d: C^{p}(\g,\a;M) \to C^{p+1}(\g,\a;M)
-  \]\pause
+  \]
   \begin{align*}
     df(\w_0\wedge\ldots\wedge\w_p) = &\sum_i (-1)^{\tau_i(-)} \w_i . f(\w_0 \wedge \ldots \hat \w_i \ldots \wedge \w_p) \\
     &+ \sum_{i < j} (-1)^{\sigma_{i,j}(-)} f([\w_i,\w_j]\wedge \w_0 \ldots \hat \w_i \ldots \hat \w_j \ldots \wedge \w_p)
   \end{align*}
+  Of course,
+  \[
+    d \circ d = 0
+  \]
 \end{frame}
 
 \begin{frame}{Relative cohomology II}\pause
@@ -246,13 +261,12 @@
   \]\pause
   Under tensor product, the direct sum of cohomology groups for a module becomes a module for $\H^\bullet(\g,\a;\CC)$:
   \[
-    \H^\bullet(\g,\a;M) = \bigoplus_{p \in \ZZ} \H^p(\g,\a;M).
+    \H^\bullet(\g,\a;M) = \bigoplus_{p \in \ZZ} \H^p(\g,\a; M).
   \]\pause
   As does
   \[
-    \Ext^\bullet_{(\g,\a)}(M,M) = \bigoplus_{p \in \ZZ} \Ext^p(\g,\a;M).
-  \]
-  
+    \Ext^\bullet_{(\g,\a)}(M,M) = \bigoplus_{p \in \ZZ} \Ext^p_{(\g,\a)}(M, M).
+  \]  
 \end{frame}
 
 \begin{frame}{A result of Fuks-Leites}\pause
@@ -268,19 +282,41 @@
     \[
       \H^\bullet(\gl(m|n),0;\CC) \cong \H^\bullet(\gl(\max(m,n)),0;\CC)
     \]
-  \end{theorem}\pause
-  There's a similar statement for Lie superalgebras of type $G(3)$, $F(4)$, and $D(2,1;\alpha)$
+      There's a similar statement for Lie superalgebras of type $G(3)$, $F(4)$, and $D(2,1;\alpha)$
+    \end{theorem}\pause
+    \begin{theorem}[Restated]
+      In many cases, ordinary Lie superalgebra cohomology carries no geometric information.
+    \end{theorem}
 \end{frame}
 
-\begin{frame}{A result of Boe-Kujawa-Nakano}
+\begin{frame}{A result of Boe-Kujawa-Nakano}\pause
 
   \begin{theorem}[Boe, Kujawa, Nakano 2006]
-    Let $\g = \even{\g} \oplus \odd{\g}$ be a classical Lie superalgebra. The relative cohomology ring $\H^\bullet(\g,\even{\g};\CC)$ is isomorphic to $S^\bullet(\odd{\g}^*)^{\even{G}}$, and is thus a finitely generated $\CC$-algebra.
+    Let $\g = \even{\g} \oplus \odd{\g}$ be a classical Lie superalgebra. The relative cohomology ring may be related to invariant theory
+    \[
+      \H^\bullet(\g,\even{\g};\CC) \cong S^\bullet(\odd{\g}^*)^{\even{G}}
+    \]
+    Therefore, $\H^\bullet(\g,\even{\g};\CC)$ is a finitely generated $\CC$-algebra.
+  \end{theorem}\pause
+  \begin{theorem}[Restated]
+    Cohomology relative to the even subsuperalgebra carries geometric information, which is determined by geometric invariant theory.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Detecting Subalgebras}\pause
+  The words \emph{stable} and \emph{polar} are GIT conditions of the action on $\even{G} \actson \odd{\g}$.\pause
+  \begin{theorem}[Boe-Kujawa-Nakano]
+    If $\g$ is a classical, simple Lie superalgebra with stable and polar action $\even{G} \actson \odd{\g}$, then there exists a Lie subsuperalgebra $\e \leq \g$ such that
+    \[
+      \H^\bullet(\g,\even{\g};\CC) \cong \H^\bullet(\e,\even{\e};\CC)^W
+    \]
+    where $W$ is a finite pseudoreflection group. Such a subsuperalgebra $\e$ is called a \emph{detecting subalgebra}.
   \end{theorem}
 \end{frame}
 
 
 \section{Spectral Sequence}
+\sectionframe{Spectral Sequence}
 
 \begin{frame}{Spectral sequence theorem}\pause
 
@@ -299,7 +335,7 @@
 
 \begin{frame}{Filtration}\pause
   We filter the cochains in a way inspired by Hochschild and Serre:\pause
-  \begin{enumerate}
+  \begin{itemize}
   \item Decompose:
     \[
       C^n(\g,\a;M) = \bigoplus_{i + j = n} C^i\left(\even{\g},\a;\Hom_\CC\left( \superext{j}\left(\g/\even{\g}\right),M\right)\right)
@@ -309,7 +345,7 @@
       C^n(\g,\a;M)_{(p)} = \bigoplus_{\substack{i + j = n\\ i \leq n-p}} C^i\left(\even{\g},\a;\Hom_\CC\left( \superext{j}\left(\g/\even{\g}\right),M\right)\right)
     \]
     
-  \end{enumerate}
+  \end{itemize}
 \pause
   We are guaranteed a spectral sequence of $\a$-modules:
   \[
@@ -317,16 +353,18 @@
   \]  
 \end{frame}
 
-\begin{frame}{ID Pages}
+\begin{frame}{ID Pages}\pause
   \begin{enumerate}
   \pause\item $E_0^{p,q}(M) \cong C^q(\even{\g},\a;\Hom_\CC(\superext{p}(\g/\even{\g}),M))$: Just a quotient.
     \vspace{0.2in}
   \pause\item $E_1^{p,q}(M) \cong \H^q(\even{\g},\a;\Hom_\CC(\superext{p}(\g/\even{\g}),M))$: Requires some algebraic gymnastics and a diagram chase.
     \vspace{0.2in}
-  \pause\item $E_2^{p,q}(M) \cong \H^p(\g,\even{\g};M) \otimes \H^q(\even{\g},\a;\CC)$: This uses the fact that $\g$ is classical and a vanishing theorem for cohomology.
+  \pause\item $E_2^{p,q}(M) \cong \H^p(\g,\even{\g};M) \otimes \H^q(\even{\g},\a;\CC)$: This uses the fact that $\g$ is classical and a vanishing theorem for cohomology:
     
-   $\Hom_\CC(\superext{p}(\g/\even{\g}),M) = \Hom_{\even{\g}}(\superext{p}(\g/\even{\g}),M) \oplus V = C^p(\g,\even{\g};M) \oplus V$. 
-  \end{enumerate}
+  \begin{align*}
+    \Hom_\CC\left(\superext{p}(\g/\even{\g}),M\right) &= \Hom_{\even{\g}}\left(\superext{p}(\g/\even{\g}),M\right) \oplus V  \\ &= C^p(\g,\even{\g};M) \oplus V
+  \end{align*}
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{ID Edge}
@@ -346,7 +384,10 @@
   \end{theorem}
 \end{frame}
 
+
 \section{Finite Generation}
+
+\sectionframe{Finite Generation}
 
 \begin{frame}{Finite generation}
   \pause
@@ -385,7 +426,7 @@
     \end{itemize}
   \end{theorem}
   
-  \pause This statement uses deep results from Kazhdan-Lusztig theory and Category $\O$ cohomology.
+  \pause The proof uses deep results from Kazhdan-Lusztig theory and Category $\O$ cohomology.
 
   \pause
 \begin{example}
@@ -394,6 +435,7 @@
 \end{frame}
 
 \section{Geometry}
+\sectionframe{Geometry}
 
 \begin{frame}{Cohomology varieties} \pause
   To do geometry, we need a finitely-generated commutative subring. As in Friedlander-Parshall, we use the even cohomology groups:
@@ -415,28 +457,46 @@
   \[
     \operatorname{Z}\left(\Ann_{\H^\bullet(\g,\a;\CC)}\Ext^\bullet_{(\g,\a)}(M,M)\right) \subseteq V_{(\g,\a)}(\CC).
   \]\pause
-  Call this the \emph{support variety} $V_{(\g,\a)}(M) \subseteq V_{(\g,\a)}(\CC)$.
+  Call this the \emph{relative support variety} $V_{(\g,\a)}(M) \subseteq V_{(\g,\a)}(\CC)$.
 \end{frame}
 
-\begin{frame}{Realization morphism and Natural Modules}\pause
-  We have the restriction map
-  \[
-    \H^\bullet(\g,\even{\g};\CC) \xrightarrow{\resmap} \H^\bullet(\g,\a;\CC)
-  \]\pause
-  And a corresponding \emph{realization morphism}
-  \[
-    V_{(\g,\even{\g})}(\CC) \xleftarrow{\Phi} V_{(\g,\a)}(\CC)
-  \]
-\pause
+\begin{frame}{Rank Varieties}\pause
   \begin{definition}
-    We say a $\g$-module is \emph{natural} relative to $\a$ if
+    For $\g$ classical, $M$ a $\g$-module, define the \emph{rank variety} of $M$ to be
     \[
-      \Phi(V_{(\g,\a)}(M)) = \Phi(V_{(\g,\a)}(\CC)) \cap V_{(\g,\even{\g})}(M).
+      \V_{(\g,\even{\g})}^\#(M) = \left\{\even{G}.x \big| \even{G}.x \text{ is closed,} x \in \odd{\g}\text{, and } M\res_{\left<x\right>} \text{ is not projective} \right\} \cup \{ 0\}
     \]
-    The subalgebra $\a$ is \emph{natural in $\g$} if every $\g$-module is natural relative to $\a$.
-  \end{definition}
-  
+  \end{definition}\pause
+  \begin{definition}
+    For $\g$ simple, classical, stable, and polar, and $M$ a $\g$-module, define the \emph{BKN rank variety} to be
+    \[
+      \V_{(\g,\even{\g})}^{rank}(M) = \{x \in \odd{\e} \mid M \res_{\left<x\right>} \text{ is not projective}\} \cup \{0\}
+    \]    
+  \end{definition}\pause
+  \begin{conjecture}
+    When both varieties exist, $\V_{(\g,\even{\g})}^{rank}(\CC) \cong \V_{(\g,\even{\g})}^\#(\CC)$, and under this association $\V_{(\g,\even{\g})}^{rank}(M) = \V_{(\g,\even{\g})}^\#(M)$.
+  \end{conjecture}
 \end{frame}
+
+% \begin{frame}{Realization morphism and Natural Modules}\pause
+%   We have the restriction map
+%   \[
+%     \H^\bullet(\g,\even{\g};\CC) \xrightarrow{\resmap} \H^\bullet(\g,\a;\CC)
+%   \]\pause
+%   And a corresponding \emph{realization morphism}
+%   \[
+%     V_{(\g,\even{\g})}(\CC) \xleftarrow{\Phi} V_{(\g,\a)}(\CC)
+%   \]
+% \pause
+%   % \begin{definition}
+%   %   We say a $\g$-module is \emph{natural} relative to $\a$ if
+%   %   \[
+%   %     \Phi(V_{(\g,\a)}(M)) = \Phi(V_{(\g,\a)}(\CC)) \cap V_{(\g,\even{\g})}(M).
+%   %   \]
+%   %   The subalgebra $\a$ is \emph{natural in $\g$} if every $\g$-module is natural relative to $\a$.
+%   % \end{definition}
+  
+% \end{frame}
 
 \begin{frame}{Tensor products}\pause
   We say a Lie superalgebra $\g$ \emph{satisfies the tensor product theorem} relative to $\a$ if
@@ -445,43 +505,127 @@
   \]
   for all modules $M$ and $N$.
   \pause
-  \begin{theorem}
-    Let $\g$ be a Lie superalgebra which satisfies the tensor product theorem relative to $\even{\g}$. Then \[\Phi(V_{(\g,\a)}(M \otimes N)) = \Phi(V_{(\g,\a)}(M)) \cap \Phi(V_{(\g,\a)}(N)).\]
+  \begin{theorem}[Grantcharov-Grantcharov-Nakano-Wu]
+    Let $\g$ be simple, classical, polar, and stable. Then $\g$ satisfies the tensor product theorem relative to $\even{\g}$.
   \end{theorem}
+  [GGNW] Idea: Define rank varieties for detecting subalgebra, and prove
+  \[
+    \V_{(\g,\even{\g})}(M) \cong \V_{(\e,\even{\e})}^{rank}(M) / W
+  \]
+  
+    \begin{example}
+    The following Lie superalgebras satisfy the tensor product theorem: $\gl(m|n)$, $\sl(m|n)$, $\mathfrak{psl}(m|n)$, $\mathfrak{q}(n)$, $\mathfrak{osp}(m|n)$, $D(2,1;\alpha)$, $G(3)$, and $F(4)$.
+  \end{example}
 \end{frame}
 
-\begin{frame}{Connectedness} \pause
-  We need to assume further $\g$ is \emph{stable} and \emph{polar}, some GIT conditions appearing in [Bagci-Kujawa-Nakano].
 
+\begin{frame}{Tensor products (cont)}
   \pause
-  \begin{theorem}
-    Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Suppose $\Phi(V_{(\g,\a)}(M)) = X \cup Y$ with $X \cap Y = \{0\}$. Then there exist modules $M_1$ and $M_2$ with
+  The [GGNW] techniques used to prove the tensor product theorem fundamentally rely on detecting subalgebra techniques. This does not obviously generalize to the general classical case.
+  \pause
+  \begin{conjecture}
+    Let $\g$ be a classical Lie superalgebra. Then
     \[
-      X = \Phi(V_{(\g,\a)}(M_1)) \text{ and } Y = \Phi(V_{(\g,\a)})(M_1).
+      \V_{(\g,\even{\g})}(\CC) \cong \V_{(\g,\even{\g})}^\#(\CC)
+    \]
+    And under this identification, for every $\g$-module $M$
+    \[
+      \V_{(\g,\even{\g})}(M) = \V_{(\g,\even{\g})}^\#(M)
+    \]
+  \end{conjecture}
+  \pause
+  \begin{conjecture}[Kujawa-Nakano-Talian, 2014]
+    The tensor product theorem holds for all classical Lie superalgebras.
+  \end{conjecture}
+  % \begin{theorem}
+  %   Let $\g$ be a Lie superalgebra which satisfies the tensor product theorem relative to $\even{\g}$. Then \[\Phi(V_{(\g,\a)}(M \otimes N)) = \Phi(V_{(\g,\a)}(M)) \cap \Phi(V_{(\g,\a)}(N)).\]
+  % \end{theorem}
+\end{frame}
+
+% \begin{frame}{Connectedness} \pause
+%   We need to assume further $\g$ is \emph{stable} and \emph{polar}, some GIT conditions appearing in [Bagci-Kujawa-Nakano].
+
+%   \pause
+%   \begin{theorem}
+%     Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Suppose $\Phi(V_{(\g,\a)}(M)) = X \cup Y$ with $X \cap Y = \{0\}$. Then there exist modules $M_1$ and $M_2$ with
+%     \[
+%       X = \Phi(V_{(\g,\a)}(M_1)) \text{ and } Y = \Phi(V_{(\g,\a)})(M_1).
+%     \]
+    
+%   \end{theorem}
+% \end{frame}
+
+% \begin{frame}{Realizability}
+%   \pause
+%   \begin{theorem}
+%     Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Let $X$ be a closed, conical, subvariety of $V_{(\g,\a)}(\CC)$. 
+%   \end{theorem}
+% \end{frame}
+
+% \begin{frame}{What's next?}
+%   \begin{enumerate}
+%   \pause\item What happens when $\a \not\leq \even{\g}$? Are there cases when $\H^\bullet(\g,\a;\CC)$ is still finitely-generated?
+%   \pause\item We saw that the spectral sequence collapses at $E_2$ implies $\H^\bullet(\g,\a;\CC)$ is CM. What about the converse? (It does for $p$-nilpotent Lie algebras, [Carlson-Nakano].)
+%   \pause\item When is $\a$ natural?
+%   \pause\item The dimension $\dim V_{(\g,\even{\g})}(M) = \atyp M$ for simple modules when $\g = \gl(m|n)$ [Boe-Kujawa-Nakano]. Is there a combinatorial interpretation for $\dim V_{(\g,\a)} M$ for simple $M$?
+%   \end{enumerate}
+% \end{frame}
+
+% \begin{frame}[fragile]{Tensor Products Relative to $\a$}
+%   When the tensor product theorem holds for $\g$ relative to $\even{\g}$
+%   \begin{center}
+%     \[
+%     \begin{tikzcd}
+%       \V_{(\g,\even{\g})}(M \cap N) \arrow[r,equals] & \V_{(\g,\even{\g})}(M) \cap \V_{(\g,\even{\g})}(N) \\
+%       \V_{(\g,\a)}(M \cap N) \arrow[u,"\resmap^*"] & \V_{(\g,\a)}(M) \cap \V_{(\g,\a)}(N) \arrow[u,"\resmap^*"] \arrow[l,hook]
+%    \end{tikzcd}
+%    \]
+%  \end{center}
+%  Is the bottom morphism an equality? What techniques can be used to investigate this morphism?
+% \end{frame}
+
+\begin{frame}{Natural Subalgebras I}
+\pause
+  The restriction morphism $\resmap: \H^\bullet(\g,\even{\g};\CC) \to \H^\bullet(\g,\a;\CC)$ yields a finite-to-one realization morphism:
+  \[
+    \Phi: \V_{(\g,\a)}(\CC) \to \V_{(\g,\even{\g})}(\CC)
+  \]
+  \pause
+  \begin{definition}
+    For a classical Lie superalgebra $\g$, a subalgebra $\a \leq \even{\g}$ is \emph{natural} if
+    \[
+      \Phi\left(\V_{(\g,\a)}(M)\right) = \V_{(\g,\even{\g})}(M) \cap \Phi\left(\V_{(\g,\a)}(\CC)\right)
     \]
     
-  \end{theorem}
+  \end{definition}
 \end{frame}
 
-\begin{frame}{Realizability}
+\begin{frame}{Natural Subalgebras II}
   \pause
   \begin{theorem}
-    Let $\g = \even{\g} \oplus \odd{\g}$ be classical, stable, and polar, with $\a \leq \even{\g}$ natural. Let $X$ be a closed, conical, subvariety of $V_{(\g,\a)}(\CC)$. 
+    Let $\a \leq \g$ be a natural subalgebra, with $M, N$ be $\g$-modules.
+    \begin{itemize}
+      \pause
+    \item If $\g$ satisfies the tensor product theorem, then
+      \[
+        \Phi\left(\V_{(\g,\a)}(M \otimes N)\right) = \Phi(\V_{(\g,\a)}(M)) \cap \Phi(\V_{(\g,\a)}(N))
+      \]
+      \pause
+    \item Let $\g$ be stable and polar, and $\Phi(\V_{(\g,\a)}(M)) = X_1 \cup X_2$ with $X_i$ closed conical and $X_1 \cap X_2 = \{0\}$. Then there exist modules $M_1$ and $M_2$ with $M = M_1 \oplus M_2$ and $\Phi(\V_{(\g,\a)}(M_i)) = X_i$.
+      \pause
+    \item Let $X$ be a closed conical subset of $\Phi(\V_{(\g,\a)}(\CC))$. There exists a $\g$-module $M$ with
+      \[
+        \Phi(\V_{(\g,\a)}(M)) = X
+      \]
+      
+    \end{itemize}
   \end{theorem}
 \end{frame}
 
-\begin{frame}{What's next?}
-  \begin{enumerate}
-  \pause\item What happens when $\a \not\leq \even{\g}$? Are there cases when $\H^\bullet(\g,\a;\CC)$ is still finitely-generated?
-  \pause\item We saw that the spectral sequence collapses at $E_2$ implies $\H^\bullet(\g,\a;\CC)$ is CM. What about the converse? (It does for $p$-nilpotent Lie algebras, [Carlson-Nakano].)
-  \pause\item When is $\a$ natural?
-  \pause\item The dimension $\dim V_{(\g,\even{\g}}(M) = \atyp M$ for simple modules when $\g = \gl(m|n)$ [Boe-Kujawa-Nakano]. Is there a combinatorial interpretation for $\dim V_{(\g,\a)} M$ for simple $M$?
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Thanks!}
+\title[HBD Sarah]{}
+\begin{frame}
   \centering
-  \large Thank you!
+  \Huge Thank you!
 \end{frame}
 
 \end{document}
